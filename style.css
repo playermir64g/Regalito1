@@ -1,0 +1,501 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(220, 20, 60, 0.03) 10px,
+            rgba(220, 20, 60, 0.03) 20px
+        ),
+        linear-gradient(135deg, #0d0d0d 0%, #1a0000 50%, #0d0d0d 100%);
+    background-color: #0a0a0a;
+    font-family: 'Bebas Neue', sans-serif;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(ellipse at 10% 20%, rgba(220, 20, 60, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(220, 20, 60, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, transparent 49%, rgba(220, 20, 60, 0.05) 50%, transparent 51%),
+        linear-gradient(0deg, transparent 49%, rgba(220, 20, 60, 0.05) 50%, transparent 51%);
+    background-size: 100px 100px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    text-align: center;
+    min-height: 80vh;
+    position: relative;
+    padding: 40px;
+    border: 3px solid rgba(220, 20, 60, 0.3);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 
+        0 0 30px rgba(220, 20, 60, 0.2),
+        inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.container::before,
+.container::after {
+    content: '⊥';
+    position: absolute;
+    color: rgba(220, 20, 60, 0.3);
+    font-size: 10rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+}
+
+.container::before {
+    left: -80px;
+}
+
+.container::after {
+    right: -80px;
+    transform: translateY(-50%) scaleX(-1);
+}
+
+.corner-decor {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #dc143c;
+}
+
+.corner-decor.top-left {
+    top: 10px;
+    left: 10px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-decor.top-right {
+    top: 10px;
+    right: 10px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.corner-decor.bottom-left {
+    bottom: 10px;
+    left: 10px;
+    border-right: none;
+    border-top: none;
+}
+
+.corner-decor.bottom-right {
+    bottom: 10px;
+    right: 10px;
+    border-left: none;
+    border-top: none;
+}
+
+h1 {
+    color: #fff;
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    text-shadow: 
+        3px 3px 0 #dc143c,
+        -1px -1px 0 #dc143c,
+        1px -1px 0 #dc143c,
+        -1px 1px 0 #dc143c,
+        0 0 30px rgba(220, 20, 60, 0.8);
+    letter-spacing: 5px;
+    position: relative;
+    padding: 15px 30px;
+    border: 2px solid rgba(220, 20, 60, 0.5);
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 0 20px rgba(220, 20, 60, 0.3),
+        inset 0 0 20px rgba(220, 20, 60, 0.1);
+}
+
+h1::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+#imagen {
+    max-width: 200px;
+    margin: 0 auto 30px;
+    display: block;
+    border-radius: 20px;
+    border: 3px solid #dc143c;
+    box-shadow: 0 0 20px rgba(220, 20, 60, 0.5);
+}
+
+#tlacuaches {
+    display: none;
+    text-align: center;
+}
+
+.buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+}
+
+button {
+    padding: 18px 50px;
+    font-size: 1.4rem;
+    border: 3px solid #dc143c;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+}
+
+.btn-no-asco {
+    background: #1a1a1a;
+    color: #dc143c;
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
+}
+
+.btn-no-asco:hover {
+    background: #dc143c;
+    color: #1a1a1a;
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(220, 20, 60, 0.6);
+}
+
+.btn-no-quiero {
+    background: #1a1a1a;
+    color: #dc143c;
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.3);
+}
+
+.btn-no-quiero:hover {
+    background: #dc143c;
+    color: #1a1a1a;
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(220, 20, 60, 0.6);
+}
+
+.btn-reiniciar {
+    background: #dc143c;
+    color: #1a1a1a;
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+}
+
+.btn-reiniciar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(220, 20, 60, 0.8);
+}
+
+.btn-si {
+    background: #dc143c;
+    color: #1a1a1a;
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.5);
+}
+
+.btn-si:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(220, 20, 60, 0.8);
+}
+
+/* Tlacuaches Animation */
+.tlacuache-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 0 auto 30px;
+}
+
+.tlacuache {
+    width: 80px;
+    height: 100px;
+    position: relative;
+    border-radius: 50% 50% 40% 40%;
+    animation: dance 0.6s ease-in-out infinite alternate;
+    display: block;
+    background: #FF69B4;
+}
+
+.tlacuache .ears {
+    position: absolute;
+    top: -15px;
+    left: 5px;
+    width: 70px;
+    height: 25px;
+}
+
+.tlacuache .ears::before,
+.tlacuache .ears::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 25px;
+    border-radius: 50% 50% 40% 40%;
+    top: 0;
+}
+
+.tlacuache .ears::before {
+    left: 0;
+    transform: rotate(-20deg);
+}
+
+.tlacuache .ears::after {
+    right: 0;
+    transform: rotate(20deg);
+}
+
+.tlacuache .face {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+}
+
+.tlacuache .eyes {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 40px;
+    height: 12px;
+}
+
+.tlacuache .eyes::before,
+.tlacuache .eyes::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    top: 0;
+}
+
+.tlacuache .eyes::before {
+    left: 5px;
+}
+
+.tlacuache .eyes::after {
+    right: 5px;
+}
+
+.tlacuache .nose {
+    position: absolute;
+    top: 28px;
+    left: 22px;
+    width: 18px;
+    height: 14px;
+    background: #1a1a1a;
+    border-radius: 50% 50% 40% 40%;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+}
+
+.tlacuache .nose::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 4px;
+    width: 10px;
+    height: 8px;
+    background: #FFB6C1;
+    border-radius: 50%;
+}
+
+.tlacuache .whiskers {
+    position: absolute;
+    top: 32px;
+    left: -10px;
+    width: 80px;
+    height: 20px;
+}
+
+.tlacuache .whiskers::before,
+.tlacuache .whiskers::after {
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 3px;
+    background: #1a1a1a;
+    left: 0;
+}
+
+.tlacuache .whiskers::before {
+    top: 0;
+    transform: rotate(-15deg);
+}
+
+.tlacuache .whiskers::after {
+    top: 10px;
+    transform: rotate(-5deg);
+}
+
+.tlacuache .whiskers-right {
+    position: absolute;
+    top: 32px;
+    right: -10px;
+    width: 80px;
+    height: 20px;
+}
+
+.tlacuache .whiskers-right::before,
+.tlacuache .whiskers-right::after {
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 3px;
+    background: #1a1a1a;
+    right: 0;
+}
+
+.tlacuache .whiskers-right::before {
+    top: 0;
+    transform: rotate(15deg);
+}
+
+.tlacuache .whiskers-right::after {
+    top: 10px;
+    transform: rotate(5deg);
+}
+
+.tlacuache .mouth {
+    position: absolute;
+    top: 45px;
+    left: 15px;
+    width: 30px;
+    height: 12px;
+    border-bottom: 4px solid #1a1a1a;
+    border-radius: 0 0 50% 50%;
+}
+
+.tlacuache .tail {
+    position: absolute;
+    bottom: 10px;
+    right: -30px;
+    width: 50px;
+    height: 3px;
+    background: #FFB6C1;
+    border: none;
+    border-radius: 0 50% 50% 0;
+    animation: tailWag 0.4s ease-in-out infinite alternate;
+    transform-origin: left center;
+}
+
+/* Tlacua - más oscuro */
+.tlacua {
+    background: #5D4037 !important;
+    animation-delay: 0s;
+}
+
+.tlacua .ears::before,
+.tlacua .ears::after {
+    background: #5D4037;
+}
+
+.tlacua .nose {
+    background: #3E2723;
+}
+
+.tlacua .mouth {
+    border-color: #3E2723;
+}
+
+/* Cuache - más claro */
+.cuache {
+    background: #8D6E63 !important;
+    animation-delay: 0.3s;
+}
+
+.cuache .ears::before,
+.cuache .ears::after {
+    background: #8D6E63;
+}
+
+.cuache .nose {
+    background: #5D4037;
+}
+
+.cuache .mouth {
+    border-color: #5D4037;
+}
+
+.tlacuache .tail {
+    position: absolute;
+    bottom: 10px;
+    right: -30px;
+    width: 50px;
+    height: 3px;
+    background: #FFB6C1;
+    border: none;
+    border-radius: 0 50% 50% 0;
+    animation: tailWag 0.4s ease-in-out infinite alternate;
+    transform-origin: left center;
+}
+
+.tlacua .tail {
+    background: #FF69B4;
+    box-shadow: 0 0 3px #FF69B4;
+}
+
+.cuache .tail {
+    background: #FFB6C1;
+    box-shadow: 0 0 3px #FFB6C1;
+}
+
+@keyframes tailWag {
+    0% {
+        transform: rotate(-30deg);
+    }
+    100% {
+        transform: rotate(30deg);
+    }
+}
+
+@keyframes dance {
+    0% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    100% {
+        transform: translateY(-25px) rotate(5deg);
+    }
+}
